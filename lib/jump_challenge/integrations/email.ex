@@ -1,7 +1,7 @@
 defmodule JumpChallenge.Integrations.Email do
   use Ecto.Schema
   import Ecto.Changeset
-  alias JumpChallenge.Types.PgVector
+  alias Pgvector.Ecto.Vector
 
   schema "emails" do
     field :body, :string
@@ -11,8 +11,7 @@ defmodule JumpChallenge.Integrations.Email do
     field :recipient, :string
     field :received_at, :utc_datetime
     field :user_id, :id
-    field :embedding, :vector
-    belongs_to :user, JumpChallenge.Accounts.User
+    field :embedding, Vector
 
     timestamps(type: :utc_datetime)
   end

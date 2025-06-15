@@ -9,7 +9,7 @@ defmodule JumpChallenge.Repo.Migrations.CreateEmails do
       add :sender, :string
       add :recipient, :string
       add :received_at, :utc_datetime
-      add :embedding, :"vector(1536)"
+      add :embedding, :vector, size: 384
       add :user_id, references(:users, on_delete: :nothing)
 
       timestamps(type: :utc_datetime)

@@ -9,7 +9,7 @@ defmodule JumpChallenge.Repo.Migrations.CreateContacts do
       add :email, :string
       add :company, :string
       add :notes, :text
-      add :embedding, :"vector(1536)"
+      add :embedding, :vector, size: 384
       add :user_id, references(:users, on_delete: :nothing)
 
       timestamps(type: :utc_datetime)

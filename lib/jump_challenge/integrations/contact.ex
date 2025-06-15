@@ -1,7 +1,7 @@
 defmodule JumpChallenge.Integrations.Contact do
   use Ecto.Schema
   import Ecto.Changeset
-  alias JumpChallenge.Types.PgVector
+  alias Pgvector.Ecto.Vector
 
   schema "contacts" do
     field :hubspot_id, :string
@@ -11,9 +11,7 @@ defmodule JumpChallenge.Integrations.Contact do
     field :company, :string
     field :notes, :string
     field :user_id, :id
-    field :embedding, :vector
-
-    belongs_to :user, JumpChallenge.Accounts.User
+    field :embedding, Vector
 
     timestamps(type: :utc_datetime)
   end

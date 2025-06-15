@@ -51,6 +51,14 @@ defmodule JumpChallengeWeb.Router do
 
     live_session :redirect_if_user_is_authenticated,
       on_mount: [{JumpChallengeWeb.UserAuth, :redirect_if_user_is_authenticated}] do
+
+      live "/home", HomeLive.Index, :index
+      live "/home/new", HomeLive.Index, :new
+      live "/home/:id/edit", HomeLive.Index, :edit
+
+      live "/home/:id", HomeLive.Show, :show
+      live "/home/:id/show/edit", HomeLive.Show, :edit
+      
       live "/users/register", UserRegistrationLive, :new
       live "/users/log_in", UserLoginLive, :new
       live "/users/reset_password", UserForgotPasswordLive, :new
@@ -67,6 +75,13 @@ defmodule JumpChallengeWeb.Router do
       on_mount: [{JumpChallengeWeb.UserAuth, :ensure_authenticated}] do
       live "/users/settings", UserSettingsLive, :edit
       live "/users/settings/confirm_email/:token", UserSettingsLive, :confirm_email
+
+      live "/messages", MessageLive.Index, :index
+      live "/messages/new", MessageLive.Index, :new
+      live "/messages/:id/edit", MessageLive.Index, :edit
+
+      live "/messages/:id", MessageLive.Show, :show
+      live "/messages/:id/show/edit", MessageLive.Show, :edit
     end
   end
 
